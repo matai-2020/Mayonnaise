@@ -9,7 +9,7 @@ module.exports = router
 router.get('/', (req, res) => {
   db.getHaircuts()
     .then(haircuts => {
-      res.render('/', { haircuts: haircuts })
+      res.render('haircut/index', { haircuts: haircuts })
     })
     .catch(err => {
       res.status(500).send('HAIRCUT DATABASE ERROR: ' + err.message)
@@ -83,4 +83,6 @@ router.post('/booking/:id', (req, res) => {
   const id = Number(req.params.id)
   // console.log(formdetails)
   // console.log(id)
+  db.addbooking(id, formdetails)
+
 })
