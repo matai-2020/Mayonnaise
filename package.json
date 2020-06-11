@@ -20,7 +20,9 @@
   "homepage": "https://github.com/matai-2020/Mayonnaise#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^4.0.4"
+    "express-handlebars": "^4.0.4",
+    "knex": "^0.21.1",
+    "sqlite3": "github:mapbox/node-sqlite3#c196b05103cc34f33e7292d0578974ccd1fe349a"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
