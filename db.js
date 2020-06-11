@@ -4,7 +4,8 @@ const database = require('knex')(config)
 
 module.exports = {
   getHaircuts,
-  getOneCut
+  getOneCut,
+  addbooking
 }
 
 function getHaircuts (db = database) {
@@ -15,6 +16,12 @@ function getOneCut (id, db = database) {
   return db('haircuts').where('id', id).first()
 }
 
-function addbooking(id, formdetails, db = database) {
-  return
+function addbooking (id, formdetails, db = database) {
+  return db('bookings')
+    .insert({
+      name: formdetails.name,
+      phone: formdetails.phone,
+      preftime: formdetails.preftime,
+      recieveinfo: formdetails.recieveinfo
+    })
 }
