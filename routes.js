@@ -20,9 +20,8 @@ router.get('/', (req, res) => {
 
 // Gives profile page access to one haircut
 
-router.get('/profile/:id', (req, res) => {
+router.get('haircut/profile/:id', (req, res) => {
   const id = Number(req.params.id)
-
   db.getOneCut(id)
     .then(onehaircut => {
       const cutdetails = {
