@@ -11,7 +11,8 @@ module.exports = router
 router.get('/', (req, res) => {
   db.getHaircuts()
     .then(haircuts => {
-      res.render('haircut/index', { haircuts: haircuts })
+
+      res.render('home', { haircuts: haircuts })
     })
     .catch(err => {
       res.status(500).send('HAIRCUT DATABASE ERROR: ' + err.message)
