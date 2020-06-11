@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   db.getHaircuts()
     .then(haircuts => {
       res.render('/', { haircuts: haircuts })
-    }) 
+    })
     .catch(err => {
       res.status(500).send('HAIRCUT DATABASE ERROR: ' + err.message)
     })
@@ -21,17 +21,48 @@ router.get('/profile/:id', (req, res) => {
 
   db.getOneCut(id)
     .then(onehaircut => {
-
       const cutdetails = {
         id: id,
         name: onehaircut.name,
         image: onehaircut.image,
         cost: onehaircut.cost
-      }  
+      }
 
       res.render('/profile', cutdetails)
-    }) 
+    })
     .catch(err => {
       res.status(500).send('HAIRCUT DATABASE ERROR: ' + err.message)
     })
 })
+
+router.get('/profile/:id', (req, res) => {
+  const id = Number(req.params.id)
+
+  db.getOneCut(id)
+    .then(onehaircut => {
+      const cutdetails = {
+        id: id,
+        name: onehaircut.name,
+        image: onehaircut.image,
+        cost: onehaircut.cost
+      }
+
+      res.render('/profile', cutdetails)
+    })
+    .catch(err => {
+      res.status(500).send('HAIRCUT DATABASE ERROR: ' + err.message)
+    })
+})
+
+// Bookings page
+
+router.get('/booking/:id', (req, res) => {
+  const id = Number(req.params.id)
+
+  console.log('Hello World', id)
+  res.render('/booking')
+})
+
+// router.post('/booking', (req, res) => {
+//   const { name, phone, preftime, recieveinfo } = req.body
+// })
