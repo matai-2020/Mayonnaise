@@ -6,9 +6,12 @@ const db = require('./db')
 
 module.exports = router
 
+// Gives homepage access to all haricuts
+
 router.get('/', (req, res) => {
   db.getHaircuts()
     .then(haircuts => {
+
       res.render('home', { haircuts: haircuts })
     })
     .catch(err => {
@@ -16,28 +19,10 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/profile/:id', (req, res) => {
+// Gives profile page access to one haircut
+
+router.get('haircut/profile/:id', (req, res) => {
   const id = Number(req.params.id)
-
-  db.getOneCut(id)
-    .then(onehaircut => {
-      const cutdetails = {
-        id: id,
-        name: onehaircut.name,
-        image: onehaircut.image,
-        cost: onehaircut.cost
-      }
-
-      res.render('/profile', cutdetails)
-    })
-    .catch(err => {
-      res.status(500).send('HAIRCUT DATABASE ERROR: ' + err.message)
-    })
-})
-
-router.get('/profile/:id', (req, res) => {
-  const id = Number(req.params.id)
-
   db.getOneCut(id)
     .then(onehaircut => {
       const cutdetails = {
@@ -55,6 +40,8 @@ router.get('/profile/:id', (req, res) => {
 })
 
 // Bookings page
+// get gives booking page access to haircut information
+// post puts booking info into bookings table
 
 router.get('/booking/:id', (req, res) => {
   const id = Number(req.params.id)
@@ -83,4 +70,12 @@ router.post('/booking/:id', (req, res) => {
   const id = Number(req.params.id)
   // console.log(formdetails)
   // console.log(id)
+  db.addbooking(id, formdetails)
+    .then(() => res.redirect('/confirmation'))
+    .catch(err => {
+      res.status(500).send('POST ERROR: ' + err.message)
+    })
 })
+
+// Confirmation route
+// user needs to have access to haircuts table and bookings details
