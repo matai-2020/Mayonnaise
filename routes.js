@@ -59,10 +59,28 @@ router.get('/profile/:id', (req, res) => {
 router.get('/booking/:id', (req, res) => {
   const id = Number(req.params.id)
 
-  console.log('Hello World', id)
-  res.render('/booking')
+  db.getOneCut(id)
+    .then(onehaircut => {
+      const cutdetails = {
+        id: id,
+        name: onehaircut.name,
+        image: onehaircut.image,
+        cost: onehaircut.cost
+      }
+
+      res.render('/booking', cutdetails)
+    })
+    .catch(err => {
+      res.status(500).send('HAIRCUT DATABASE ERROR: ' + err.message)
+    })
+
+  // console.log('Hello World', id)
 })
 
-// router.post('/booking', (req, res) => {
-//   const { name, phone, preftime, recieveinfo } = req.body
-// })
+router.post('/booking/:id', (req, res) => {
+  const { name, phone, preftime, recieveinfo } = req.body
+  const formdetails = { name, phone, preftime, recieveinfo }
+  const id = Number(req.params.id)
+  // console.log(formdetails)
+  // console.log(id)
+})
