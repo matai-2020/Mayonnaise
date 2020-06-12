@@ -11,7 +11,6 @@ module.exports = router
 router.get('/', (req, res) => {
   db.getHaircuts()
     .then(haircuts => {
-
       res.render('home', { haircuts: haircuts })
     })
     .catch(err => {
@@ -84,6 +83,5 @@ router.get('/confirmation/:id', (req, res) => {
   const id = Number(req.params.id)
 
   db.getBookingInfo(id)
-  .then()
-
+    .then()
 })
