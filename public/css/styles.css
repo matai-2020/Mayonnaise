@@ -3,3 +3,18 @@ $almond: #e6dbd0ff;
 $deep-taupe: #7d6167ff;
 $eggplant: #754f5bff;
 $eggplant-2: #5d4954ff; */
+
+* {
+  display: flexbox;
+  background-color: #e6dbd0ff;
+  align-content: center;
+  font-family: 'Work Sans', sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.flex-container {
+  align-content: center
+}
