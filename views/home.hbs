@@ -1,11 +1,17 @@
-<div class="flex-container">
-  <form>
-      <h1>Post-Covid Haircut Selector</h1>
+<div class="home-container">
             {{#each haircuts}}
-          <img src={{image}}>
+            <a href="profile/{{id}}">
+            <div class="haircut-box">
+              <div class="image-box">
+          <img src="{{image}}">
+          </div>
+          <div class="text-box">
           <h2>{{name}}</h2>
           <h3>{{cost}}</h3>
+          </div>
+          </div>
+          </a>
           {{/each}}
-          <button></button>
+  
   </form>
 </div>

@@ -5,16 +5,56 @@ $eggplant: #475f5bff;
 $eggplant-2: #5d4954ff; */
 
 * {
-  display: flexbox;
+  box-sizing: border-box;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Lato", sans-serif;
   background-color: #e6dbd0ff;
-  align-content: center;
-  font-family: 'Work Sans', sans-serif;
 }
 
-h1 {
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.home-container {
+  margin: auto;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.home-container a {
+  width: 25%;
+  color: black;
+  text-decoration: none;
+  margin-left: 3vmin;
+  margin-right: 3vmin;
+  margin-bottom: 7vmin;
+}
+
+.haircut-box {
+  background-color: #5d4954ff;
+}
+
+
+.image-box img {
+  max-width: 100%;
+  max-height: auto;
+}
+
+.text-box {
   text-align: center;
+  padding-bottom: 5px;
+  color: #f9e0d9ff;
 }
-
 .flex-container {
   align-content: center;
   justify-content: center;
@@ -30,7 +70,22 @@ h1 {
 
 }
 
-.button {
+.title {
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+button {
+  background-color: ;
+}
+button {
 	box-shadow: 0px 10px 14px -7px  #5d4954ff;
 	background-color: #5d4954ff;
 	border-radius:8px;
@@ -52,5 +107,8 @@ h1 {
 	position:relative;
 	top:1px;
 }
+<<<<<<< HEAD
 
 form
+=======
+>>>>>>> 30efc61a94618ae21903c447ace0188c1f0df8bb
