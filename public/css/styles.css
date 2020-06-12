@@ -18,6 +18,9 @@ body {
   background-color: #e6dbd0ff;
 }
 
+*, *:before, *:after {
+  box-sizing: border-box;
+}
 
 .home-container {
   margin: auto;
@@ -44,7 +47,7 @@ body {
 
 .image-box img {
   max-width: 100%;
-  max-height: 100%;
+  max-height: auto;
 }
 
 .text-box {
@@ -66,6 +69,18 @@ body {
   justify-content: center;
   align-items: center;
 
+}
+
+.title {
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 button {
