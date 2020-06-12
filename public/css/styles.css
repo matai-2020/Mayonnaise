@@ -65,7 +65,6 @@ body {
 .img {
   max-width: 15%;
   height: auto;
-
   justify-content: center;
   align-items: center;
 
@@ -100,11 +99,16 @@ button {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #7d6167ff;
 }
-button:hover {
+.button:hover {
 	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
 	background-color:#408c99;
 }
-button:active {
+.button:active {
 	position:relative;
 	top:1px;
 }
+<<<<<<< HEAD
+
+form
+=======
+>>>>>>> 30efc61a94618ae21903c447ace0188c1f0df8bb
