@@ -5,25 +5,50 @@ $eggplant: #754f5bff;
 $eggplant-2: #5d4954ff; */
 
 * {
-  display: flexbox;
+  box-sizing: border-box;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Lato", sans-serif;
   background-color: #e6dbd0ff;
-  align-content: center;
-  font-family: 'Work Sans', sans-serif;
 }
 
-h1 {
+
+.home-container {
+  margin: auto;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.home-container a {
+  width: 25%;
+  color: black;
+  text-decoration: none;
+  margin-left: 3vmin;
+  margin-right: 3vmin;
+  margin-bottom: 7vmin;
+}
+
+.haircut-box {
+  background-color: #5d4954ff;
+}
+
+
+.image-box img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.text-box {
   text-align: center;
-}
-
-.flex-container {
-  align-content: center
-}
-
-.img{
-  margin: 0;
-  position: absolute;
-}
-
-.container {
-position: relative;
+  padding-bottom: 5px;
+  color: #f9e0d9ff;
 }
