@@ -20,7 +20,7 @@ function getOneCut (haircutId, db = database) {
 function addbooking (haircutId, formdetails, db = database) {
   return db('bookings')
     .insert({
-     // id: haircutId,
+      haircut_id: haircutId,
       name: formdetails.name,
       phone: formdetails.phone,
       preftime: formdetails.preftime,

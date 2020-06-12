@@ -70,7 +70,9 @@ router.post('/booking/:id', (req, res) => {
   // console.log(formdetails)
   // console.log(id)
   db.addbooking(haircutId, formdetails)
-    .then(([bookingId]) => res.redirect(`/confirmation/${bookingId}`))
+    .then(([bookingId]) => {
+      console.log(bookingId)
+      res.redirect(`/confirmation/${bookingId}`)})
     .catch(err => {
       res.status(500).send('POST ERROR: ' + err.message)
     })
@@ -81,6 +83,8 @@ router.post('/booking/:id', (req, res) => {
 
 router.get('/confirmation/:id', (req, res) => {
   const bookingId = Number(req.params.id)
+
+  console.log('get route booking id: ', bookingId)
 
   db.getBookingInfo(bookingId)
     .then(joinedtables => {
