@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 
 // Gives profile page access to one haircut
 
-router.get('haircut/profile/:id', (req, res) => {
+router.get('/profile/:id', (req, res) => {
   const id = Number(req.params.id)
   db.getOneCut(id)
     .then(onehaircut => {
@@ -32,7 +32,7 @@ router.get('haircut/profile/:id', (req, res) => {
         cost: onehaircut.cost
       }
 
-      res.render('/profile', cutdetails)
+      res.render('profile', cutdetails)
     })
     .catch(err => {
       res.status(500).send('HAIRCUT DATABASE ERROR: ' + err.message)
@@ -55,7 +55,7 @@ router.get('/booking/:id', (req, res) => {
         cost: onehaircut.cost
       }
 
-      res.render('/booking', cutdetails)
+      res.render('booking', cutdetails)
     })
     .catch(err => {
       res.status(500).send('HAIRCUT DATABASE ERROR: ' + err.message)
@@ -71,7 +71,7 @@ router.post('/booking/:id', (req, res) => {
   // console.log(formdetails)
   // console.log(id)
   db.addbooking(id, formdetails)
-    .then(() => res.redirect('/confirmation'))
+    .then(() => res.redirect('/confirmation/:id'))
     .catch(err => {
       res.status(500).send('POST ERROR: ' + err.message)
     })
@@ -79,3 +79,11 @@ router.post('/booking/:id', (req, res) => {
 
 // Confirmation route
 // user needs to have access to haircuts table and bookings details
+
+router.get('/confirmation/:id', (req, res) => {
+  const id = Number(req.params.id)
+
+  db.getBookingInfo(id)
+  .then()
+
+})

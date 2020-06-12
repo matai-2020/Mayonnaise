@@ -5,7 +5,8 @@ const database = require('knex')(config)
 module.exports = {
   getHaircuts,
   getOneCut,
-  addbooking
+  addbooking,
+  getBookingInfo
 }
 
 function getHaircuts (db = database) {
@@ -24,4 +25,11 @@ function addbooking (id, formdetails, db = database) {
       preftime: formdetails.preftime,
       recieveinfo: formdetails.recieveinfo
     })
+}
+
+function getBookingInfo (id, db = database) {
+  return db('bookings')
+    .join('haircuts', 'bookings.haircuts_id', 'haircuts.id')
+    .where('id', id)
+    .select('haircuts.name as cut', 'haircuts.cost', 'bookings.name', 'bookings.preftime')
 }
