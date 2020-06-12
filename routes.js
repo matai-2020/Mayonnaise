@@ -67,12 +67,10 @@ router.post('/booking/:id', (req, res) => {
   const { name, phone, preftime, recieveinfo } = req.body
   const formdetails = { name, phone, preftime, recieveinfo }
   const haircutId = Number(req.params.id)
-  // console.log(formdetails)
-  // console.log(id)
   db.addbooking(haircutId, formdetails)
     .then(([bookingId]) => {
-      console.log(bookingId)
-      res.redirect(`/confirmation/${bookingId}`)})
+      res.redirect(`/confirmation/${bookingId}`)
+    })
     .catch(err => {
       res.status(500).send('POST ERROR: ' + err.message)
     })
@@ -89,6 +87,10 @@ router.get('/confirmation/:id', (req, res) => {
   db.getBookingInfo(bookingId)
     .then(joinedtables => {
       console.log(joinedtables)
+      const joinedObjects = {
+        
+      }
+      res.render('confirmation', joinedObjects)
     })
     .catch(err => {
       res.status(500).send('CONFIRMATION ERROR: ' + err.message)
