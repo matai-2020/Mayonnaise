@@ -13,13 +13,14 @@ function getHaircuts (db = database) {
   return db('haircuts').select()
 }
 
-function getOneCut (id, db = database) {
-  return db('haircuts').where('id', id).first()
+function getOneCut (haircutId, db = database) {
+  return db('haircuts').where('id', haircutId).first()
 }
 
-function addbooking (id, formdetails, db = database) {
+function addbooking (haircutId, formdetails, db = database) {
   return db('bookings')
     .insert({
+      haircut_id: haircutId,
       name: formdetails.name,
       phone: formdetails.phone,
       preftime: formdetails.preftime,
@@ -27,9 +28,9 @@ function addbooking (id, formdetails, db = database) {
     })
 }
 
-function getBookingInfo (id, db = database) {
+function getBookingInfo (bookingId, db = database) {
   return db('bookings')
-    .join('haircuts', 'bookings.haircuts_id', 'haircuts.id')
-    .where('id', id)
+    .join('haircuts', 'bookings.haircut_id', 'haircuts.id')
+    .where('bookings.id', bookingId).first()
     .select('haircuts.name as cut', 'haircuts.cost', 'bookings.name', 'bookings.preftime')
 }
