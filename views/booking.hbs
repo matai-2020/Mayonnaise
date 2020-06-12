@@ -1,6 +1,27 @@
-<h1>hello</h1>
-<form action="/booking/:id" method="post">
-  <input name="name">
-  <input type="submit">
+<div class= "flex-container" >
+      <h1>Post-Covid Haircut Selector</h1>
+       <img class="img" src={{image}} alt={{name}}>
+          <h2>cut: {{name}}</h2>
+          <h3>cost: {{cost}}</h3>
 
+
+  <form action="/booking/:id" method="post">
+  <div>
+   Preferred Time: <select name= "preftime">
+      <option value= "12pm">12:00PM</option>
+      <option value= "12pm">13:00PM</option>
+      <option value= "12pm">14:00PM</option>
+      <option value= "12pm">15:00PM</option>
+      <option value= "12pm">16:00PM</option>
+    </select>
+  </div>
+
+<br>
+  <p>Name  <input name="name" type= "text"></p>
+  <p>Phone  <input name="phone" type= "text"></p>
+  <p>Email  <input name="email" type= "text"></p>
+<br>
+
+  <input type="submit" class="button">
 </form>
+</div>
