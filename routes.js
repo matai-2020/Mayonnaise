@@ -88,7 +88,10 @@ router.get('/confirmation/:id', (req, res) => {
     .then(joinedtables => {
       console.log(joinedtables)
       const joinedObjects = {
-        
+        name: joinedtables.name,
+        cost: joinedtables.cost,
+        preftime: joinedtables.preftime,
+        cut: joinedtables.cut
       }
       res.render('confirmation', joinedObjects)
     })

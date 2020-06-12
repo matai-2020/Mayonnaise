@@ -5,7 +5,7 @@
           <h3>cost: {{cost}}</h3>
 
 
-  <form action="/booking/:id" method="post">
+  <form action="/booking/{{id}}" method="post">
   <div>
    Preferred Time: <select name= "preftime">
       <option value= "12pm">12:00PM</option>
@@ -20,6 +20,7 @@
   <p>Name  <input name="name" type= "text"></p>
   <p>Phone  <input name="phone" type= "text"></p>
   <p>Email  <input name="email" type= "text"></p>
+  <p><input type="hidden" name="{{id}}"></p>
 <br>
 
   <input type="submit" class="button">
