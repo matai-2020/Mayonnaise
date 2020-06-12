@@ -30,4 +30,6 @@ function addbooking (id, formdetails, db = database) {
 function getBookingInfo (id, db = database) {
   return db('bookings')
     .join('haircuts', 'bookings.haircuts_id', 'haircuts.id')
+    .where('id', id)
+    .select('haircuts.name as cut', 'haircuts.cost', 'bookings.name', 'bookings.preftime')
 }

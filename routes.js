@@ -84,6 +84,6 @@ router.get('/confirmation/:id', (req, res) => {
   const id = Number(req.params.id)
 
   db.getBookingInfo(id)
-
+  .then()
 
 })
