@@ -11,7 +11,6 @@ module.exports = router
 router.get('/', (req, res) => {
   db.getHaircuts()
     .then(haircuts => {
-
       res.render('home', { haircuts: haircuts })
     })
     .catch(err => {
@@ -22,11 +21,11 @@ router.get('/', (req, res) => {
 // Gives profile page access to one haircut
 
 router.get('/profile/:id', (req, res) => {
-  const id = Number(req.params.id)
-  db.getOneCut(id)
+  const haircutId = Number(req.params.id)
+  db.getOneCut(haircutId)
     .then(onehaircut => {
       const cutdetails = {
-        id: id,
+        id: haircutId,
         name: onehaircut.name,
         image: onehaircut.image,
         cost: onehaircut.cost
@@ -44,12 +43,12 @@ router.get('/profile/:id', (req, res) => {
 // post puts booking info into bookings table
 
 router.get('/booking/:id', (req, res) => {
-  const id = Number(req.params.id)
+  const haircutId = Number(req.params.id)
 
-  db.getOneCut(id)
+  db.getOneCut(haircutId)
     .then(onehaircut => {
       const cutdetails = {
-        id: id,
+        id: haircutId,
         name: onehaircut.name,
         image: onehaircut.image,
         cost: onehaircut.cost
@@ -67,11 +66,11 @@ router.get('/booking/:id', (req, res) => {
 router.post('/booking/:id', (req, res) => {
   const { name, phone, preftime, recieveinfo } = req.body
   const formdetails = { name, phone, preftime, recieveinfo }
-  const id = Number(req.params.id)
+  const haircutId = Number(req.params.id)
   // console.log(formdetails)
   // console.log(id)
-  db.addbooking(id, formdetails)
-    .then(() => res.redirect('/confirmation/:id'))
+  db.addbooking(haircutId, formdetails)
+    .then(([bookingId]) => res.redirect(`/confirmation/${bookingId}`))
     .catch(err => {
       res.status(500).send('POST ERROR: ' + err.message)
     })
@@ -81,9 +80,13 @@ router.post('/booking/:id', (req, res) => {
 // user needs to have access to haircuts table and bookings details
 
 router.get('/confirmation/:id', (req, res) => {
-  const id = Number(req.params.id)
+  const bookingId = Number(req.params.id)
 
-  db.getBookingInfo(id)
-  .then()
-
+  db.getBookingInfo(bookingId)
+    .then(joinedtables => {
+      console.log(joinedtables)
+    })
+    .catch(err => {
+      res.status(500).send('CONFIRMATION ERROR: ' + err.message)
+    })
 })
